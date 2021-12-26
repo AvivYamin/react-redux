@@ -1,0 +1,15 @@
+[
+    {
+        "item": "iPad 4 Mini",
+        "price": 500.01,
+        "stock": 2
+    },
+    {"item": "H&M T-Shirt White",
+        "price": 10.99,
+        "stock": 10
+    },
+    {"item": "Charlie XCX - Sucker CD",
+        "price": 19.99,
+        "stock": 5
+    }
+]
