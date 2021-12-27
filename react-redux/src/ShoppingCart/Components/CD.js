@@ -6,7 +6,7 @@ function CD(props) {
     return (
         <div>
             <h3>{ `${props.cdTitle} : ${props.cdPrice}$ X ${props.cdStock}` }</h3>
-            <button onClick={props.addCd}>Add To Cart</button>
+            {props.cdStock ? <button onClick={props.addCd}>Add To Cart</button> : <button disabled>Out Of Stock</button>}
         </div>
     )
 }

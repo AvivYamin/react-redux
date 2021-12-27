@@ -6,7 +6,7 @@ function Ipad(props) {
     return (
         <div>
             <h3>{ `${props.ipadTitle} : ${props.ipadPrice}$ X ${props.ipadStock}` }</h3>
-            <button onClick={props.addIpad}>Add To Cart</button>
+            {props.ipadStock ? <button onClick={props.addIpad}>Add To Cart</button> : <button disabled>Out Of Stock</button>}
         </div>
     )
 }

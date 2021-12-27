@@ -9,15 +9,13 @@ const initialState = {
     myShirts: 0,
 }
 
-export const shirtReducer = (state = initialState, action, root) => {
+export const shirtReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_SHIRT_TO_CART:
-            // let total = store.getState().cart.total;
             return { 
                 ...state,
                 shirtStock: state.shirtStock - 1,
                 myShirts: state.myShirts + 1,
-                total: root.total + 1
             };
             
         default:
