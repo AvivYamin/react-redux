@@ -1,5 +1,4 @@
 import { ADD_IPAD_TO_CART } from "./shoppingActionTypes";
-import store from "./store";
 const data = require("../data/products.json")
 
 const initialState = {
@@ -7,7 +6,6 @@ const initialState = {
     ipadPrice: data[0].price,
     ipadTitle: data[0].item,
     myIpads: 0,
-    // total: store.getState().total
 }
 
 export const ipadReducer = (state = initialState, action) => {
@@ -17,7 +15,6 @@ export const ipadReducer = (state = initialState, action) => {
                 ...state,
                 ipadStock: state.ipadStock - 1,
                 myIpads: state.myIpads + 1,
-                // total: state.total + state.ipadPrice
             };
             
         default:

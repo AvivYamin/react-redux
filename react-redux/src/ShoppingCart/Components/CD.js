@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addCdToCart } from '../redux/shoppingActions' 
+import { addCdToCart, addToCart } from '../redux/shoppingActions' 
 
-function CD(props) {
+function CD({ cdTitle, cdPrice, cdStock, addCd, addToCart }) {
     return (
         <div>
-            <h3>{ `${props.cdTitle} : ${props.cdPrice}$ X ${props.cdStock}` }</h3>
-            {props.cdStock ? <button onClick={props.addCd}>Add To Cart</button> : <button disabled>Out Of Stock</button>}
+            <h3>{ `${cdTitle} : ${cdPrice}$ X ${cdStock}` }</h3>
+            {cdStock ? <button onClick={ () => { addCd(); addToCart(cdPrice)}}>Add To Cart</button> : <button disabled>Out Of Stock</button>}
         </div>
     )
 }
@@ -22,6 +22,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         addCd: () => dispatch(addCdToCart()),
+        addToCart: (cdPrice) => dispatch(addToCart(cdPrice))
     }
 }
 

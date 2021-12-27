@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addShirtToCart } from '../redux/shoppingActions' 
+import { addShirtToCart, addToCart } from '../redux/shoppingActions' 
 
-function Shirt(props) {
+function Shirt({ shirtPrice, shirtStock, shirtTitle, addToCart, addShirt }) {
     return (
         <div>
-            <h3>{ `${props.shirtTitle} : ${props.shirtPrice}$ X ${props.shirtStock}` }</h3>
-            {props.shirtStock ? <button onClick={props.addShirt}>Add To Cart</button> : <button disabled>Out Of Stock</button>}
+            <h3>{ `${shirtTitle} : ${shirtPrice}$ X ${shirtStock}` }</h3>
+            {shirtStock ? <button onClick={ () => { addShirt(); addToCart(shirtPrice)}}>Add To Cart</button> : <button disabled>Out Of Stock</button>}
         </div>
     )
 }
@@ -22,6 +22,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         addShirt: () => dispatch(addShirtToCart()),
+        addToCart: (shirtPrice) => dispatch(addToCart(shirtPrice))
     }
 }
 

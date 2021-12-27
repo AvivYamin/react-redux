@@ -2,23 +2,25 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { checkOut } from '../redux/shoppingActions';
 
-function calculateTotal(numOfIpads, numOfShirts, numOfCds, ipadPrice, shirtPrice, cdPrice){
-    let total = numOfIpads * ipadPrice + numOfShirts * shirtPrice + numOfCds * cdPrice;
-    return Math.round(total * 10) / 10
-}
-
 function showMessage(total){
     let message = total ? `Total : ${total} $` : `Add Items to cart`
     return message
 }
 
-const Total = ({ myIpads, myShirts, myCds, ipadPrice, shirtPrice, cdPrice, total, checkOut}) => {
+const Total = ({ checkOut, total, message }) => {
     return (
         <div>
-            {showMessage(calculateTotal(myIpads, myShirts, myCds, ipadPrice, shirtPrice, cdPrice))}
+            {message ? <div> { message } </div> : 
             <div>
-                <button onClick={checkOut}>Check Out</button> 
+                <div>
+                    {showMessage(Math.round(total * 10) / 10)}
+                </div>
+                <br></br>
+                <div>
+                    <button onClick={() => checkOut()}>Check Out</button> 
+                </div>
             </div>
+            }  
         </div>
     )
 }
@@ -26,18 +28,14 @@ const Total = ({ myIpads, myShirts, myCds, ipadPrice, shirtPrice, cdPrice, total
 
 const mapStateToProps = state => {
     return{
-        myIpads: state.ipad.myIpads,
-        myShirts: state.shirt.myShirts,
-        myCds: state.cd.myCds,
-        ipadPrice: state.ipad.ipadPrice,
-        shirtPrice: state.shirt.shirtPrice,
-        cdPrice: state.cd.cdPrice
+        total: state.cart.total,
+        message: state.cart.message
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        checkOut: () => dispatch(checkOut()),
+        checkOut: (total) => dispatch(checkOut(total)),
     }
 }
 

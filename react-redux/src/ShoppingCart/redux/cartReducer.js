@@ -1,24 +1,23 @@
-import { CHECK_OUT } from "./shoppingActionTypes";
-import store from "./store";
+import { ADD_TO_CART, CHECK_OUT } from "./shoppingActionTypes";
 
 const initialState = {
-    // myIpads: store.getState().ipad.myIpads,
-    // myShirts: store.getState().shit.myShirts,
-    // myCds: store.getState().cd.myCds,
-    // ipadPrice: store.getState().ipad.ipadPrice,
-    // shirtPrice: store.getState().shirt.shirtPrice,
-    // cdPrice: store.getState().cd.cdPrice,
     total: 0,
+    message: ""
 }
 
 export const cartReducer = (state = initialState, action) => {
     switch (action.type) {
+        case ADD_TO_CART:
+            return { 
+                ...state,
+                total: state.total + action.payload,
+            };
         case CHECK_OUT:
             return { 
                 ...state,
-                total: state.total + 1,
+                total: initialState,
+                message: action.message
             };
-            
         default:
             return state;
     }

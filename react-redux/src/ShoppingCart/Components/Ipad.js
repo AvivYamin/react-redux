@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addIpadToCart } from '../redux/shoppingActions' 
+import { addIpadToCart, addToCart } from '../redux/shoppingActions' 
 
-function Ipad(props) {
+function Ipad({ ipadPrice, ipadStock, ipadTitle, addIpad, addToCart }) {
     return (
         <div>
-            <h3>{ `${props.ipadTitle} : ${props.ipadPrice}$ X ${props.ipadStock}` }</h3>
-            {props.ipadStock ? <button onClick={props.addIpad}>Add To Cart</button> : <button disabled>Out Of Stock</button>}
+            <h3>{ `${ipadTitle} : ${ipadPrice}$ X ${ipadStock}` }</h3>
+            {ipadStock ? <button onClick={ () => { addIpad(); addToCart(ipadPrice)}}>Add To Cart</button> : <button disabled>Out Of Stock</button>}
         </div>
     )
 }
@@ -22,6 +22,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         addIpad: () => dispatch(addIpadToCart()),
+        addToCart: (ipadPrice) => dispatch(addToCart(ipadPrice))
     }
 }
 

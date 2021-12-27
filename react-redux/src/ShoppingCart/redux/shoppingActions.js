@@ -1,5 +1,5 @@
 
-import { ADD_IPAD_TO_CART, ADD_SHIRT_TO_CART, ADD_CD_TO_CART, CHECK_OUT } from "./shoppingActionTypes"
+import { ADD_IPAD_TO_CART, ADD_SHIRT_TO_CART, ADD_CD_TO_CART, CHECK_OUT, ADD_TO_CART } from "./shoppingActionTypes"
 
 export const addIpadToCart = () => {
     return {
@@ -19,8 +19,17 @@ export const addCdToCart = () => {
     }
 }
 
-export const checkOut = () => {
+export const addToCart = (price) => {
     return{
-        type: CHECK_OUT
+        type: ADD_TO_CART,
+        payload: price
     }
 }
+
+export const checkOut = () => {
+    return{
+        type: CHECK_OUT,
+        message: "Thank You For Shopping =]"
+    }
+}
+

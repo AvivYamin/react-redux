@@ -10,12 +10,3 @@ export default combineReducers({
     cd: cdReducer,
     cart: cartReducer, 
 })
-
-// export const rootReducer = (state = {}, action) => {
-//      return{
-//         ipad: ipadReducer(state.ipadReducer, action, state.cartReducer),
-//         shirt: shirtReducer(state.shirtReducer, action, state.cartReducer),
-//         cd: cdReducer(state.cdReducer, action, state.cartReducer),
-//         cart: cartReducer(state.cartReducer, action),
-//     }
-// }

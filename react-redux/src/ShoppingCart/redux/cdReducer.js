@@ -1,5 +1,4 @@
 import { ADD_CD_TO_CART } from "./shoppingActionTypes";
-import store from "./store";
 const data = require("../data/products.json")
 
 const initialState = {

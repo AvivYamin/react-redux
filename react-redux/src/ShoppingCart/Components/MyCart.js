@@ -7,6 +7,7 @@ const MyCart = () => {
         <div>
             <h2>My Cart</h2>
             <MyProducts />
+            <br></br>
             <Total /> 
         </div>
     )
