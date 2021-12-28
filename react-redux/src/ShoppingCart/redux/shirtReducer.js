@@ -1,4 +1,4 @@
-import { ADD_SHIRT_TO_CART } from "./shoppingActionTypes";
+import { ADD_SHIRT_TO_CART, CHECK_OUT } from "./shoppingActionTypes";
 const data = require("../data/products.json")
 
 const initialState = {
@@ -16,7 +16,12 @@ export const shirtReducer = (state = initialState, action) => {
                 shirtStock: state.shirtStock - 1,
                 myShirts: state.myShirts + 1,
             };
-            
+        case CHECK_OUT:
+            return { 
+                ...state,
+                shirtStock: initialState.shirtStock,
+                myShirts: initialState.myShirts,
+            };                   
         default:
             return state;
     }

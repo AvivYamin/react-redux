@@ -1,4 +1,4 @@
-import { ADD_CD_TO_CART } from "./shoppingActionTypes";
+import { ADD_CD_TO_CART, CHECK_OUT } from "./shoppingActionTypes";
 const data = require("../data/products.json")
 
 const initialState = {
@@ -16,7 +16,12 @@ export const cdReducer = (state = initialState, action) => {
                 cdStock: state.cdStock - 1,
                 myCds: state.myCds + 1,
             };
-            
+        case CHECK_OUT:
+            return { 
+                ...state,
+                cdStock: initialState.cdStock,
+                myCds: initialState.myCds,
+            };        
         default:
             return state;
     }

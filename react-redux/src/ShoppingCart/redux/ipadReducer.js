@@ -1,4 +1,4 @@
-import { ADD_IPAD_TO_CART } from "./shoppingActionTypes";
+import { ADD_IPAD_TO_CART, CHECK_OUT } from "./shoppingActionTypes";
 const data = require("../data/products.json")
 
 const initialState = {
@@ -15,6 +15,12 @@ export const ipadReducer = (state = initialState, action) => {
                 ...state,
                 ipadStock: state.ipadStock - 1,
                 myIpads: state.myIpads + 1,
+            };
+        case CHECK_OUT:
+            return { 
+                ...state,
+                ipadStock: initialState.ipadStock,
+                myIpads: initialState.myIpads,
             };
             
         default:
