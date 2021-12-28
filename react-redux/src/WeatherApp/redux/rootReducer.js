@@ -1,9 +1,6 @@
-// import { combineReducers } from "redux";
-// import { ipadReducer } from "./ipadReducer";
-// import { shirtReducer } from "./shirtReducer";
-// import { cdReducer } from "./cdReducer";
-// import { cartReducer } from "./cartReducer";
+import { combineReducers } from "redux";
+import { navReducer } from "../Components/Header/navReducer"
 
 export default combineReducers({ 
-
+    nav: navReducer
 })
